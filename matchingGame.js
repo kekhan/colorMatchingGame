@@ -1,70 +1,120 @@
-var arrClick = [];
+var arrColor = [];
 var matchedArr =[];
-var userTurn = false;
-var tick = 0;
+var arrVal = [];
+var userTurn = true;
+var timer;
 
-function startGame(){
-	userTurn = true;
-	timer(tick);
 
-}
+
 
 
 function getClick(btn){
+	
 	if(userTurn){
-
+		
 		var element = btn.value;
+		console.log(element);
 
 		if(element == "1"){
 			btn.style.backgroundColor = "blue";
 		}
 		else if (element == "2"){
-			btn.style.backgroundColor ="pink";
+			btn.style.backgroundColor ="blue";
 		}
 		else if (element == "3"){
 			btn.style.backgroundColor = "yellow";
 		}
 		else if (element == "4"){
-			btn.style.backgroundColor = "purple";
+			btn.style.backgroundColor = "yellow";
 		}
+		else if (element == "5"){
+			btn.style.backgroundColor = "red";
+		}
+		else if (element == "6"){
+			btn.style.backgroundColor = "red";
+		}
+		else if (element == "7"){
+			btn.style.backgroundColor = "pink";
+		}
+		else if (element == "8"){
+			btn.style.backgroundColor = "pink";
+		}
+		arrColor.push(btn.style.backgroundColor);
+		arrVal.push(btn.value);
+		console.log(arrColor);
 
-		arrClick.push(element,btn);
-
-		if(arrClick.length == 2){
-			check2loop(arrClick);
-			arrClick =[];
+		if(arrColor.length == 2 ){
+			userTurn =false;
+			check2loop(arrColor,arrVal);
+			arrColor =[];
+			arrVal = [];
 		}
 
 	}
-	
-
 }
 
-function check2loop(arr,btn){
-	var first = arr[0];
-	var second = arr[1];
-	 if (first == second){
+function check2loop(arr1,arr2){
+	console.log(arr1,arr2);
+	var color1 = arr1[0];
+	var color2 = arr1[1];
+	var test1 =  "button" + arr2[0];
+	var test2 = "button" + arr2[1];
+	 console.log(test1,test2);
+	 if (color1 == color2){
 
-	 	matchedArr.push(first);
-	 	matchedArr.push(second);
-	 	element = document.getElementByClassName('button' + first)[0];
-	 	element.style.backgroundColor = "orange";
+	 	matchedArr.push(color1);
+	 	matchedArr.push(color2);
+	 	checkWin();
+	 	console.log("matchedArr", matchedArr.length);
+	 	element = document.getElementById(test1);
+	 	otherElement = document.getElementById(test2);
+	 	var otherOriColor = otherElement.style.backgroundColor;
+	 	var originColr= element.style.backgroundColor;
+		element.style.backgroundColor='orange';
+		otherElement.style.backgroundColor = 'orange'
+	 	myvar=setTimeout(function(){
+	 	    element.style.backgroundColor = originColr;
+	 	    otherElement.style.backgroundColor =otherOriColor; 
+			clearTimeout(myvar);	
+			}, 1000);
+	 	userTurn =true;
+	 }
+	 else {
+	 	element1 = document.getElementById(test1);
+	 	element2 = document.getElementById(test2);
+	 	var el1OriginColor = element1.style.backgroundColor;
+	 	var el2OriginColor= element2.style.backgroundColor;
+	 	console.log(element1, element2);
+	 	element1.style.backgroundColor=el1OriginColor;
+		element2.style.backgroundColor = el2OriginColor;
+	 	myvar=setTimeout(function(){
+	 	    element1.style.backgroundColor = 'green';
+	 	    element2.style.backgroundColor ='green'; 
+			clearTimeout(myvar);	
+			}, 1000);
+	 	
+	 	userTurn = true;
+
 	 }
 	
 }
 
-function timer(tick){
-	var timer = setTimeOut(function(){
-		tick = tick + 1;
+function timer(){
+	var tick = 0;
+	timer = setInterval(function(){
+		tick++;
+		document.getElementById("timer").innerHTML = "timer: " +tick + " seconds";
 
 	},1000);
-	clearTimeOut(timer);
 }
 
 function checkWin(){
-	if(matchedArr.length >= 8){
-		document.getElementsByTagName('h1').innerhtml = "Great Job!";
-		console.log(tick);
-
+	console.log("check winner");
+	if(matchedArr.length == 8){
+		clearInterval(timer);
+		document.getElementById('msg').innerHTML = "Great Job!";
+		
 	}
 }
+
+
