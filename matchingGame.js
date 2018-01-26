@@ -2,13 +2,22 @@ var arrColor = [];
 var matchedArr =[];
 var arrVal = [];
 var userTurn = true;
+var arrRandom = [1,2,3,4,5,6,7,8,9];
 var timer;
 
+function randomColor(){
+	// generate a random color to be assigned to element in 
+	// getclicks 
+	//colorArr1 = ["red","pink","blue","yellow"];
+	//colorArr2 = ["red","pink","blue","yellow"];
+	// var colorIndex = MAth.floor(Math.random()* colorArr.length);
+	// then aslong as color is not in arrRandom return color
 
-
+}
 
 
 function getClick(btn){
+	//randomize(btn.value);
 	
 	if(userTurn){
 		
@@ -16,25 +25,25 @@ function getClick(btn){
 		console.log(element);
 
 		if(element == "1"){
-			btn.style.backgroundColor = "blue";
+			btn.style.backgroundColor = "red";
 		}
 		else if (element == "2"){
-			btn.style.backgroundColor ="blue";
+			btn.style.backgroundColor ="pink";
 		}
 		else if (element == "3"){
 			btn.style.backgroundColor = "yellow";
 		}
 		else if (element == "4"){
-			btn.style.backgroundColor = "yellow";
+			btn.style.backgroundColor = "blue";
 		}
 		else if (element == "5"){
-			btn.style.backgroundColor = "red";
+			btn.style.backgroundColor = "yellow";
 		}
 		else if (element == "6"){
 			btn.style.backgroundColor = "red";
 		}
 		else if (element == "7"){
-			btn.style.backgroundColor = "pink";
+			btn.style.backgroundColor = "blue";
 		}
 		else if (element == "8"){
 			btn.style.backgroundColor = "pink";
