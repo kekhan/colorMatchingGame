@@ -6,8 +6,8 @@ var arrRandom = [1,2,3,4,5,6,7,8,9];
 var timer;
 
 function randomColor(){
-	// generate a random color to be assigned to element in 
-	// getclicks 
+	// generate a random color to be assigned to element in
+	// getclicks
 	//colorArr1 = ["red","pink","blue","yellow"];
 	//colorArr2 = ["red","pink","blue","yellow"];
 	// var colorIndex = MAth.floor(Math.random()* colorArr.length);
@@ -18,9 +18,9 @@ function randomColor(){
 
 function getClick(btn){
 	//randomize(btn.value);
-	
+
 	if(userTurn){
-		
+
 		var element = btn.value;
 		console.log(element);
 
@@ -53,7 +53,7 @@ function getClick(btn){
 		console.log(arrColor);
 
 		if(arrColor.length == 2 ){
-			userTurn =false;
+			userTurn = false;
 			check2loop(arrColor,arrVal);
 			arrColor =[];
 			arrVal = [];
@@ -63,6 +63,7 @@ function getClick(btn){
 }
 
 function check2loop(arr1,arr2){
+	//checks if the the two button match
 	console.log(arr1,arr2);
 	var color1 = arr1[0];
 	var color2 = arr1[1];
@@ -70,7 +71,7 @@ function check2loop(arr1,arr2){
 	var test2 = "button" + arr2[1];
 	 console.log(test1,test2);
 	 if (color1 == color2){
-
+		 //if there is a match original color of buttons show
 	 	matchedArr.push(color1);
 	 	matchedArr.push(color2);
 	 	checkWin();
@@ -83,12 +84,13 @@ function check2loop(arr1,arr2){
 		otherElement.style.backgroundColor = 'orange'
 	 	myvar=setTimeout(function(){
 	 	    element.style.backgroundColor = originColr;
-	 	    otherElement.style.backgroundColor =otherOriColor; 
-			clearTimeout(myvar);	
+	 	    otherElement.style.backgroundColor =otherOriColor;
+			clearTimeout(myvar);
 			}, 1000);
-	 	userTurn =true;
+	 	userTurn=true;
 	 }
 	 else {
+		 //If not match color of board shows
 	 	element1 = document.getElementById(test1);
 	 	element2 = document.getElementById(test2);
 	 	var el1OriginColor = element1.style.backgroundColor;
@@ -98,14 +100,14 @@ function check2loop(arr1,arr2){
 		element2.style.backgroundColor = el2OriginColor;
 	 	myvar=setTimeout(function(){
 	 	    element1.style.backgroundColor = 'green';
-	 	    element2.style.backgroundColor ='green'; 
-			clearTimeout(myvar);	
+	 	    element2.style.backgroundColor ='green';
+			clearTimeout(myvar);
 			}, 1000);
-	 	
+
 	 	userTurn = true;
 
 	 }
-	
+
 }
 
 function timer(){
@@ -122,8 +124,6 @@ function checkWin(){
 	if(matchedArr.length == 8){
 		clearInterval(timer);
 		document.getElementById('msg').innerHTML = "Great Job!";
-		
+
 	}
 }
-
-
